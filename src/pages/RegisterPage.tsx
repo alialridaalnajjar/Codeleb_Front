@@ -1,9 +1,11 @@
 import Register from "../components/Auth/Register";
+import Navbar from "../components/Reusable/Navbar";
 
 export default function RegisterPage() {
   return (
-    <div className="bg-black min-h-screen h-aut">
+    <>
+    <Navbar/>
       <Register />
-    </div>
+    </>
   );
 }

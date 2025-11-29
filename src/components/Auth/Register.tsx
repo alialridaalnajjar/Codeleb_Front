@@ -33,6 +33,7 @@ export default function Register() {
   };
   return (
     <>
+    
       <div className="lg:hidden min-h-screen bg-linear-to-br from-slate-900 via-gray-900 to-zinc-900 text-white p-5">
         <div className="flex flex-col items-center justify-center max-w-md mx-auto">
           <div className="text-center mb-8">
@@ -383,7 +384,6 @@ export default function Register() {
           </div>
         </div>
       </div>
-      footer
     </>
   );
 }
