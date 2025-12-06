@@ -25,8 +25,11 @@ export default function ProfileHeader({
   location,
   created_at,
   profile_photo_url,
-}: ProfileData) {
-  const [isEditing, setIsEditing] = useState(false);
+  setEdit,
+}: ProfileData & { setEdit: React.Dispatch<React.SetStateAction<boolean>> }) {
+  const { getDecodedToken } = useAuthCookies();
+  const decodedToken = getDecodedToken();
+  const role = decodedToken?.role.toLocaleUpperCase() || "USER";
   const [imageFile, setImageFile] = useState<File | null>(null);
   const [imagePreview, setImagePreview] = useState<string | null>(null);
   const [uploading, setUploading] = useState(false);
@@ -176,13 +179,11 @@ export default function ProfileHeader({
               </label>
             )}
 
-            <div className="absolute top-2 right-2 bg-green-500 border-2 border-slate-800 px-1 py-1 rounded-full text-xs font-semibold text-white shadow-lg">
-              
-            </div>
+            <div className="absolute top-2 right-2 bg-green-500 border-2 border-slate-800 px-1 py-1 rounded-full text-xs font-semibold text-white shadow-lg"></div>
           </div>
 
           <button
-            onClick={() => setIsEditing(!isEditing)}
+            onClick={() => setEdit(true)}
             className="mt-4 sm:mt-0 flex items-center gap-2 bg-linear-to-r from-amber-600 to-amber-700 hover:from-amber-700 hover:to-amber-800 text-white font-semibold px-6 py-2.5 rounded-lg transition-all shadow-lg shadow-amber-900/50"
           >
             <Edit className="h-4 w-4" />
@@ -198,7 +199,7 @@ export default function ProfileHeader({
             </h1>
             <div className="flex items-center gap-1 border border-amber-600/30 bg-amber-600/10 text-amber-400 px-3 py-1 rounded-full text-xs font-semibold">
               <Award className="h-3 w-3" />
-              Pro Member
+              {role}
             </div>
           </div>
           <p className="text-gray-400 flex items-center gap-2 text-sm">
