@@ -41,5 +41,14 @@ export interface DecodedToken {
 export type Activity = {
   title: string;
   user_id: number;
-  dod:Date
+  dod: Date;
+};
+
+export type Video = {
+  video_id: number;
+  module_id: number;
+  title: string;
+  video_url: string;
+  manifest_url?: string | null;
+  duration_seconds: number;
 };

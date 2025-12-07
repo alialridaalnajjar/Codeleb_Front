@@ -44,9 +44,12 @@ export default function Navbar() {
               >
                 Home
               </Link>
-              <div className="text-sm hover:cursor-pointer font-medium text-white transition-colors hover:text-orange-500">
+              <Link
+                to="/Courses"
+                className="text-sm hover:cursor-pointer font-medium text-white transition-colors hover:text-orange-500"
+              >
                 Courses
-              </div>
+              </Link>
               <Link
                 to="/Search"
                 className="flex items-center gap-2 text-sm font-medium text-slate-300 transition-colors hover:text-orange-500 hover:cursor-pointer"
