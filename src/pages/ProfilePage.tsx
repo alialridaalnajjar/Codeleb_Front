@@ -26,7 +26,7 @@ export default function ProfilePage() {
         `http://localhost:3000/api/profile/${userId}`
       );
       if (!response.ok) {
-        throw new Error("Network response was not ok");
+        throw new Error("Network response was no@t ok");
       }
       const data = await response.json();
       setProfileData({ ...data.user });
@@ -44,7 +44,7 @@ export default function ProfilePage() {
 
   return (
     <>
-      <div className="sticky top-0 z-50">
+      <div className="sticky bg-gray-950  top-0 z-50">
         <Navbar />
       </div>
       {edit && (
@@ -57,7 +57,7 @@ export default function ProfilePage() {
       {loading ? (
         <Loading />
       ) : (
-        <div className="min-h-screen bg-slate-900 py-8">
+        <div className="min-h-screen bg-gray-950 py-8">
           <main className="container mx-auto px-4 py-8 lg:py-12">
             <ProfileHeader {...profileData} setEdit={setEdit} />
             <div className="mt-8 grid gap-8 lg:grid-cols-3">
@@ -68,9 +68,9 @@ export default function ProfilePage() {
               <div className="space-y-8">
                 <ProfileAchievements />
               </div>
+              <SignOut />
             </div>
           </main>
-          <SignOut />
         </div>
       )}
     </>

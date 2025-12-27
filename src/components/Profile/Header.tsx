@@ -58,7 +58,7 @@ export default function ProfileHeader({
     try {
       setUploading(true);
 
-      // Use consistent filename so it replaces the old one
+      // Use consistent filename so it replaces the old one!!
       const fileName = `profile_photos/${username}_profile_photo`;
       const storageRef = ref(storage, fileName);
 
@@ -117,10 +117,10 @@ export default function ProfileHeader({
   };
 
   return (
-    <div className="bg-slate-800/50 backdrop-blur-sm rounded-2xl border border-slate-700/50 overflow-hidden shadow-2xl">
+    <div className="bg-gray-950  backdrop-blur-sm rounded-2xl border border-slate-700/50 overflow-hidden shadow-2xl">
       {/* Cover Image */}
       <div className="h-32 md:h-48 bg-linear-to-r from-amber-600 via-amber-500 to-amber-400 relative">
-        <div className="absolute inset-0 bg-linear-to-t from-slate-900/50 to-transparent"></div>
+        <div className="absolute inset-0 bg-linear-to-t from-gray-950 to-transparent"></div>
       </div>
 
       <div className="px-4 sm:px-6 lg:px-8 pb-6">

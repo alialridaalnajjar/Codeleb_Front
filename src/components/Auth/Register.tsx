@@ -44,7 +44,7 @@ export default function Register() {
 
   return (
     <>
-      <div className="lg:hidden min-h-screen bg-linear-to-br from-slate-900 via-gray-900 to-zinc-900 text-white p-5">
+      <div className="lg:hidden min-h-screen bg-linear-to-br from-slate-900 via-gray-900 to-gray-950 text-white p-5">
         <div className="flex flex-col items-center justify-center max-w-md mx-auto">
           <div className="text-center mb-8">
             <h1 className="text-4xl font-bold mb-2 bg-linear-to-r from-amber-500 to-amber-300 bg-clip-text text-transparent">
@@ -141,8 +141,14 @@ export default function Register() {
                 <option value={RoleType.USER} className="bg-slate-900">
                   Student
                 </option>
-                <option value={RoleType.ADMIN} className="bg-slate-900">
-                  Instructor
+                <option value={RoleType.USER} className="bg-slate-900">
+                  Developer
+                </option>
+                 <option value={RoleType.USER} className="bg-slate-900">
+                  FreeLancer
+                </option>
+                 <option value={RoleType.USER} className="bg-slate-900">
+                  Prefer Not To Say
                 </option>
               </select>
             </div>
@@ -195,10 +201,13 @@ export default function Register() {
           </div>
         </div>
       </div>
-      <div className="hidden lg:flex min-h-screen bg-linear-to-br from-slate-900 via-gray-900 to-zinc-900">
+
+
+      
+            <div className="hidden lg:flex min-h-screen bg-linear-to-t from-gray-900 via-gray-950 to-gray-950">
         {/* Left side  */}
         <div className="w-1/2 flex flex-col justify-center items-center p-16 relative overflow-hidden">
-          <div className="absolute inset-0 bg-linear-to-br from-amber-600/20 to-transparent"></div>
+                  <div className="absolute inset-0 bg-linear-to-t from-amber-600/20 to-transparent"></div>
           <div className="relative z-10 max-w-lg">
             <div className="inline-block p-6 bg-linear-to-br from-amber-600 to-amber-700 rounded-3xl mb-8 shadow-2xl">
               <svg
@@ -234,7 +243,7 @@ export default function Register() {
         </div>
 
         {/* right div same aws the mobile one*/}
-        <div className="w-1/2 flex items-center justify-center p-16 bg-slate-900/50">
+        <div className="w-1/2 flex items-center justify-center p-16 bg-gray-950">
           <div className="w-full max-w-md">
             <div className="text-center mb-8">
               <h2 className="text-3xl font-bold mb-2 text-white">
@@ -333,12 +342,18 @@ export default function Register() {
                     value={user.role}
                     className="w-full bg-slate-800/50 backdrop-blur-sm border border-slate-700 rounded-lg p-3 text-white focus:outline-none focus:border-amber-600 focus:bg-slate-800/70 transition"
                   >
-                    <option value={RoleType.USER} className="bg-slate-900">
-                      Student
-                    </option>
-                    <option value={RoleType.ADMIN} className="bg-slate-900">
-                      Instructor
-                    </option>
+                      <option value={RoleType.USER} className="bg-slate-900">
+                  Student
+                </option>
+                <option value={RoleType.USER} className="bg-slate-900">
+                  Developer
+                </option>
+                 <option value={RoleType.USER} className="bg-slate-900">
+                  FreeLancer
+                </option>
+                 <option value={RoleType.USER} className="bg-slate-900">
+                  Prefer Not To Say
+                </option>
                   </select>
                 </div>
 

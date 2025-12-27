@@ -1,6 +1,7 @@
 export enum RoleType {
   USER = "student",
   ADMIN = "admin",
+  DEVELOPER = "developer",
 }
 export type UserRole = {
   username: string;
@@ -45,10 +46,23 @@ export type Activity = {
 };
 
 export type Video = {
+  thumbnail: string ;
   video_id: number;
-  module_id: number;
+  module: string;
   title: string;
   video_url: string;
   manifest_url?: string | null;
   duration_seconds: number;
+  description: string;
+  genre: string;
+  author?: string;
+  language?: string;
+};
+
+export type Documentation = {
+  doc_id: number;
+  video_fk: number;
+  title: string;
+  content: string;
+  course_id: number;
 };

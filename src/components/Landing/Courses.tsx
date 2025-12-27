@@ -6,51 +6,58 @@ import {
   Shield,
   Palette,
 } from "lucide-react";
+import { Link } from "react-router-dom";
 
 const categories = [
   {
     icon: Code2,
-    title: "React.js",
-    courses: 0,
-    color: "from-orange-500 to-orange-600",
+    title: "Front End",
+    courses: 4,
+    color: "from-pink-500 to-pink-600",
+    path: "FrontEnd",
   },
   {
     icon: Database,
     title: "Backend & APIs",
     courses: 0,
     color: "from-blue-500 to-blue-600",
+    path: "Backend",
   },
 
   {
     icon: Cloud,
-    title: "Software Engineering",
+    title: "Database Management",
     courses: 0,
     color: "from-purple-500 to-purple-600",
+    path: "SoftwareEngineering",
   },
   {
     icon: Shield,
     title: "TailwindCSS",
     courses: 0,
     color: "from-red-500 to-red-600",
+    path: "TailwindCSS",
   },
+
   {
     icon: Palette,
-    title: "Front End",
+    title: "Java",
     courses: 0,
-    color: "from-pink-500 to-pink-600",
+    color: "from-orange-500 to-orange-600",
+    path: "React",
   },
   {
     icon: Smartphone,
-    title: "Java",
+    title: "All",
     courses: 0,
     color: "from-green-500 to-green-600",
+    path: "All",
   },
 ];
 
 export default function Courses() {
   return (
-    <section className="bg-slate-900  px-4 py-16 sm:px-6 sm:py-20 lg:px-8 lg:py-24">
-      <div className="absolute right-0 top-0 h-96 w-96 rounded-full bg-orange-500/20 blur-3xl" />
+    <section className="bg-gray-950   px-4 py-16 sm:px-6 sm:py-20 lg:px-8 lg:py-24">
       <div className="absolute bottom-0 left-0 h-96 w-96 rounded-full bg-orange-600/20 blur-3xl" />
 
       <div className="mx-auto max-w-7xl">
@@ -67,9 +74,10 @@ export default function Courses() {
           {categories.map((category) => {
             const Icon = category.icon;
             return (
-              <div
+              <Link
+                to={`/courses/${category.path}`}
                 key={category.title}
-                className="group cursor-pointer rounded-2xl border border-slate-700 bg-[#1a2332] p-8 transition-all hover:scale-105 hover:border-orange-500/50 hover:shadow-xl hover:shadow-orange-500/10"
+                className="group cursor-pointer rounded-2xl border border-slate-700  bg-gray-950  p-8 transition-all hover:scale-105 hover:border-orange-500/50 hover:shadow-xl hover:shadow-orange-500/10"
               >
                 <div
                   className={`inline-flex h-16 w-16 items-center justify-center rounded-xl bg-linear-to-br ${category.color} shadow-lg transition-transform group-hover:scale-110`}
@@ -80,7 +88,7 @@ export default function Courses() {
                   {category.title}
                 </h3>
                 <p className="mt-2 text-slate-400">
-                  {category.courses} courses available
+                  {category.courses} videos available
                 </p>
                 <div className="mt-4 flex items-center text-sm font-medium text-orange-500 transition-transform group-hover:translate-x-1">
                   Explore courses
@@ -98,7 +106,7 @@ export default function Courses() {
                     />
                   </svg>
                 </div>
-              </div>
+              </Link>
             );
           })}
         </div>
