@@ -14,13 +14,12 @@ export default function LandingPage() {
     const handleIsNew = async () => {
       try {
         const response = await fetch(
-          `http://localhost:3000/api/isNew/${userId}`,
+          `${import.meta.env.VITE_API_URL}/api/isNew/${userId}`,
           {
             method: "GET"
           }
         );
         const data = await response.json();
-        console.log("Fetched is-new status:", data.isnew);
         setIsNewUser(data.isnew);
       } catch (error) {
         console.error("Error fetching is-new status:", error);

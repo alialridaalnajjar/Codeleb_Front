@@ -21,16 +21,14 @@ export default function ProfilePage() {
   const fetchUserData = async (userId: string) => {
     try {
       setLoading(true);
-      console.log("id", userId);
       const response = await fetch(
-        `http://localhost:3000/api/profile/${userId}`
+        `${import.meta.env.VITE_API_URL}/api/profile/${userId}`
       );
       if (!response.ok) {
         throw new Error("Network response was no@t ok");
       }
       const data = await response.json();
       setProfileData({ ...data.user });
-      console.log("Fetched user data:", data);
     } catch (error) {
       console.error("Error fetching user data:", error);
     } finally {

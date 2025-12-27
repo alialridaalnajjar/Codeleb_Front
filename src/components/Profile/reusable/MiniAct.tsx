@@ -10,16 +10,14 @@ export default function MiniAct() {
   const fetchActivites = async (userId: number) => {
     try {
       const response = await fetch(
-        `http://localhost:3000/api/activity/${userId}`
+        `${import.meta.env.VITE_API_URL}/api/activity/${userId}`
       );
       if (!response.ok) {
         throw new Error("Network response was not ok");
       }
       const data = await response.json();
       setActivities(data.activities);
-      console.log("Fetched activities data:", data);
     } catch (error) {
-      console.log("Error fetching activities data:", error);
     }
   };
 

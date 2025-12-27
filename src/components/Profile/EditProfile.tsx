@@ -57,10 +57,8 @@ export default function EditProfile({
     setIsSubmitting(true);
 
     try {
-      console.log("Updated data:", data);
-
       const response = await fetch(
-        `http://localhost:3000/api/profile/edit/${userId}`,
+        `${import.meta.env.VITE_API_URL}/api/profile/edit/${userId}`,
         {
           method: "PUT",
           headers: {
@@ -77,9 +75,6 @@ export default function EditProfile({
       }
 
       const updatedData = await response.json();
-      console.log("Profile updated successfully:", updatedData);
-
-      setEdit(false);
 
       refetchProfile();
     } catch (error) {

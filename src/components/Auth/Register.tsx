@@ -22,7 +22,7 @@ export default function Register() {
   });
 
   const handleRegister = async () => {
-    const res = await fetch("http://localhost:3000/api/auth/register", {
+    const res = await fetch(`${import.meta.env.VITE_API_URL}/api/auth/register`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -32,14 +32,10 @@ export default function Register() {
 
     if (res.ok) {
       const data = await res.json();
-      alert("Registration successful!");
       saveToken(data.token);
 
-      console.log("Token after operations is:", data.token);
       navigate("/");
-    } else {
-      alert("Registration failed.");
-    }
+    } 
   };
 
   return (

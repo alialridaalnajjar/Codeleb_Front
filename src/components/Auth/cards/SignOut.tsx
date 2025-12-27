@@ -5,7 +5,6 @@ export default function SignOut() {
   const navigate = useNavigate();
   const { getToken } = useAuthCookies();
   const handleSignOut = () => {
-    console.log("Signing out... the token was", getToken());
     removeToken();
 
     navigate("/", { replace: true });

@@ -182,7 +182,6 @@ export default function SkillsSelector({ onSkillsChange }: SkillsSelectorProps) 
       <div className="flex justify-end">
         <button
           onClick={() => {
-            console.log("[v0] Skills to save:", selectedSkills)
             // Here you would call your API to save to database
             alert(`Ready to save ${selectedSkills.length} skills to database`)
           }}

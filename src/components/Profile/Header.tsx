@@ -69,7 +69,7 @@ export default function ProfileHeader({
 
       try {
         const response = await fetch(
-          `http://localhost:3000/api/profile/edit/${userId}`,
+          `${import.meta.env.VITE_API_URL}/api/profile/edit/${userId}`,
           {
             method: "PUT",
             headers: {
@@ -94,18 +94,15 @@ export default function ProfileHeader({
           setNewPhotoUrl(downloadURL);
           setImageFile(null);
           setImagePreview(null);
-          alert("Profile photo updated successfully!");
         }
       } catch (backendError) {
         console.error("Backend error:", backendError);
         setNewPhotoUrl(downloadURL);
         setImageFile(null);
         setImagePreview(null);
-        alert("Photo uploaded to Firebase!");
       }
     } catch (error) {
       console.error("Error uploading file:", error);
-      alert("Failed to upload image. Please try again.");
     } finally {
       setUploading(false);
     }

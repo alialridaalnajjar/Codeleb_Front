@@ -3,7 +3,7 @@
 import { ChevronDown, ChevronUp, Clock, FileText, Tag } from "lucide-react";
 import { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
-import MiniAct from "../components/Profile/Reusable/MiniAct";
+import MiniAct from "../components/Profile/reusable/MiniAct";
 import Navbar from "../components/Reusable/Navbar";
 import { type Documentation, type Video } from "../utils/Types";
 // Mock video data
@@ -42,10 +42,9 @@ export default function WatchPage() {
     const fetchDocs = async () => {
       try {
         const response = await fetch(
-          `http://localhost:3000/api/docs/${videoId}`
+          `${import.meta.env.VITE_API_URL}/api/docs/${videoId}`
         );
         const data = await response.json();
-        console.log(data);
         setDocs(data);
       } catch (error) {
         console.error("Error fetching documentation data:", error);
@@ -57,10 +56,9 @@ export default function WatchPage() {
     const fetchVideo = async () => {
       try {
         const response = await fetch(
-          `http://localhost:3000/api/video/${videoId}`
+          `${import.meta.env.VITE_API_URL}/api/video/${videoId}`
         );
         const data = await response.json();
-        console.log(data);
         setVideoData(data);
       } catch (error) {
         console.error("Error fetching video data:", error);
@@ -72,13 +70,12 @@ export default function WatchPage() {
     const nextVideos = async () => {
       try {
         const response = await fetch(
-          `http://localhost:3000/api/video/genre/${courseName}`,
+          `${import.meta.env.VITE_API_URL}/api/video/genre/${courseName}`,
           {
             method: "GET",
           }
         );
         const data = await response.json();
-        console.log("next vids:", data);
         setNextVideoData(data);
       } catch (error) {
         console.error("Error fetching next video data:", error);

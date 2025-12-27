@@ -26,10 +26,9 @@ export default function BrowseCoursePage() {
       try {
         setLoading(true);
         const response = await fetch(
-          `http://localhost:3000/api/video/genre/${courseName}`
+          `${import.meta.env.VITE_API_URL}/api/video/genre/${courseName}`
         );
         const data = await response.json();
-        console.log("Fetched videos:", data);
 
         const videoThumbnail = data.map((video: Video) => {
           const videoHex = video.video_url.split("embed/")[1];

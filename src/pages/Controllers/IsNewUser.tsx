@@ -9,13 +9,12 @@ export default function IsNewUser({
   const setIsNewToFalse = async () => {
     try {
       const response = await fetch(
-        `http://localhost:3000/api/isNew/setIsNewFalse/40`,
+        `${import.meta.env.VITE_API_URL}/api/isNew/setIsNewFalse/40`,
         {
           method: "PUT",
         }
       );
       const data = await response.json();
-      console.log("Set isNew to false:", data);
       setIsNewUser(false);
     } catch (error) {
       console.error("Error setting isNew to false:", error);

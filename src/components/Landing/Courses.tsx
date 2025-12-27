@@ -12,7 +12,7 @@ const categories = [
   {
     icon: Code2,
     title: "Front End",
-    courses: 4,
+    courses: 3,
     color: "from-pink-500 to-pink-600",
     path: "FrontEnd",
   },
