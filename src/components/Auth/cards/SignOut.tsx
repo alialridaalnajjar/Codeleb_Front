@@ -3,7 +3,6 @@ import useAuthCookies from "../../../utils/UseAuth";
 export default function SignOut() {
   const { removeToken } = useAuthCookies();
   const navigate = useNavigate();
-  const { getToken } = useAuthCookies();
   const handleSignOut = () => {
     removeToken();
 

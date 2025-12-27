@@ -14,7 +14,9 @@ export default function IsNewUser({
           method: "PUT",
         }
       );
-      const data = await response.json();
+      if (!response.ok) {
+        throw new Error("Network response was not ok");
+      }
       setIsNewUser(false);
     } catch (error) {
       console.error("Error setting isNew to false:", error);

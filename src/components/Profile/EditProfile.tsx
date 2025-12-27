@@ -74,7 +74,6 @@ export default function EditProfile({
         return;
       }
 
-      const updatedData = await response.json();
 
       refetchProfile();
     } catch (error) {

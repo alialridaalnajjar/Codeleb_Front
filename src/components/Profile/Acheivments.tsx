@@ -1,5 +1,5 @@
 import { Award } from "lucide-react";
-import MiniAct from "./Reusable/MiniAct";
+import MiniAct from "./reusable/MiniAct";
 
 export default function ProfileAchievements() {
   const achievements: {
