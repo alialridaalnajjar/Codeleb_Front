@@ -22,20 +22,23 @@ export default function Register() {
   });
 
   const handleRegister = async () => {
-    const res = await fetch(`${import.meta.env.VITE_API_URL}/api/auth/register`, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(user),
-    });
+    const res = await fetch(
+      `${import.meta.env.VITE_API_URL}/api/auth/register`,
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(user),
+      }
+    );
 
     if (res.ok) {
       const data = await res.json();
       saveToken(data.token);
 
       navigate("/");
-    } 
+    }
   };
 
   return (
@@ -124,26 +127,17 @@ export default function Register() {
               <label className="block text-sm font-medium mb-2 text-gray-300">
                 Role
               </label>
-              <select
-                onChange={(e) =>
-                  setUser({
-                    ...user,
-                    role: e.target.value.toString() as RoleType,
-                  })
-                }
-                value={user.role}
-                className="w-full bg-slate-800/50 backdrop-blur-sm border border-slate-700 rounded-lg p-3 text-white focus:outline-none focus:border-amber-600 focus:bg-slate-800/70 transition"
-              >
-                <option value={RoleType.USER} className="bg-slate-900">
+              <select className="w-full bg-slate-800/50 backdrop-blur-sm border border-slate-700 rounded-lg p-3 text-white focus:outline-none focus:border-amber-600 focus:bg-slate-800/70 transition">
+                <option value={"Student"} className="bg-slate-900">
                   Student
                 </option>
-                <option value={RoleType.USER} className="bg-slate-900">
+                <option value={"Developer"} className="bg-slate-900">
                   Developer
                 </option>
-                 <option value={RoleType.USER} className="bg-slate-900">
+                <option value={"FreeLancer"} className="bg-slate-900">
                   FreeLancer
                 </option>
-                 <option value={RoleType.USER} className="bg-slate-900">
+                <option value={"Prefer Not To Say"} className="bg-slate-900">
                   Prefer Not To Say
                 </option>
               </select>
@@ -198,12 +192,10 @@ export default function Register() {
         </div>
       </div>
 
-
-      
-            <div className="hidden lg:flex min-h-screen bg-linear-to-t from-gray-900 via-gray-950 to-gray-950">
+      <div className="hidden lg:flex min-h-screen bg-linear-to-t from-gray-900 via-gray-950 to-gray-950">
         {/* Left side  */}
         <div className="w-1/2 flex flex-col justify-center items-center p-16 relative overflow-hidden">
-                  <div className="absolute inset-0 bg-linear-to-t from-amber-600/20 to-transparent"></div>
+          <div className="absolute inset-0 bg-linear-to-t from-amber-600/20 to-transparent"></div>
           <div className="relative z-10 max-w-lg">
             <div className="inline-block p-6 bg-linear-to-br from-amber-600 to-amber-700 rounded-3xl mb-8 shadow-2xl">
               <svg
@@ -328,28 +320,22 @@ export default function Register() {
                   <label className="block text-sm font-medium mb-2 text-gray-300">
                     Role
                   </label>
-                  <select
-                    onChange={(e) =>
-                      setUser({
-                        ...user,
-                        role: e.target.value.toString() as RoleType,
-                      })
-                    }
-                    value={user.role}
-                    className="w-full bg-slate-800/50 backdrop-blur-sm border border-slate-700 rounded-lg p-3 text-white focus:outline-none focus:border-amber-600 focus:bg-slate-800/70 transition"
-                  >
-                      <option value={RoleType.USER} className="bg-slate-900">
-                  Student
-                </option>
-                <option value={RoleType.USER} className="bg-slate-900">
-                  Developer
-                </option>
-                 <option value={RoleType.USER} className="bg-slate-900">
-                  FreeLancer
-                </option>
-                 <option value={RoleType.USER} className="bg-slate-900">
-                  Prefer Not To Say
-                </option>
+                  <select className="w-full bg-slate-800/50 backdrop-blur-sm border border-slate-700 rounded-lg p-3 text-white focus:outline-none focus:border-amber-600 focus:bg-slate-800/70 transition">
+                    <option value={"Student"} className="bg-slate-900">
+                      Student
+                    </option>
+                    <option value={"Developer"} className="bg-slate-900">
+                      Developer
+                    </option>
+                    <option value={"FreeLancer"} className="bg-slate-900">
+                      FreeLancer
+                    </option>
+                    <option
+                      value={"Prefer Not To Say"}
+                      className="bg-slate-900"
+                    >
+                      Prefer Not To Say
+                    </option>
                   </select>
                 </div>
 

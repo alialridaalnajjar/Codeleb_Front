@@ -21,9 +21,9 @@ export default function CTASection() {
             Get Started Free
             <ArrowRight className="ml-2 h-5 w-5 transition-transform group-hover:translate-x-1" />
           </Link>
-          <button className="border-2 border-white bg-transparent px-8 py-6 text-base font-semibold text-white transition-all hover:bg-white/10">
+          <a href="#courses" className="border-2 border-white bg-transparent px-8 py-6 text-base font-semibold text-white transition-all hover:bg-white/10">
             View All Courses
-          </button>
+          </a>
         </div>
 
         <p className="mt-8 text-sm text-orange-100">
