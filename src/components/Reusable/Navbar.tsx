@@ -1,10 +1,8 @@
-import { Search } from "lucide-react";
+import { Book, ChevronDown, Menu } from "lucide-react";
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import NavExpansion from "./NavExpansion";
-import { Menu } from "lucide-react";
-import { ChevronDown } from "lucide-react";
 import useAuthCookies from "../../utils/UseAuth";
+import NavExpansion from "./NavExpansion";
 export default function Navbar() {
   const [showNav, setShowNav] = useState<boolean>(false);
   const { isAuthenticated, getDecodedToken } = useAuthCookies();
@@ -51,11 +49,11 @@ export default function Navbar() {
                 Courses
               </Link>
               <Link
-                to="/Search"
+                to="/Quiz"
                 className="flex items-center gap-2 text-sm font-medium text-slate-300 transition-colors hover:text-orange-500 hover:cursor-pointer"
               >
-                <Search className="h-4 w-4" />
-                Search
+                <Book className="h-4 w-4" />
+                Quiz
               </Link>
               {isAuthenticated ? (
                 <Link

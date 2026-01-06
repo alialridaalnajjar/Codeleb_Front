@@ -1,12 +1,12 @@
 import { Route, BrowserRouter as Router, Routes } from "react-router-dom";
 import "./App.css";
 import BrowseCoursePage from "./pages/BrowseCoursePage";
+import GeneralQuizPage from "./pages/GeneralQuizPage";
 import LandingPage from "./pages/LandingPage";
 import LoginPage from "./pages/LoginPage";
 import CoursesPage from "./pages/PlayPage";
 import ProfilePage from "./pages/ProfilePage";
 import RegisterPage from "./pages/RegisterPage";
-import SearchPage from "./pages/SearchPage";
 import RedirectRoute from "./utils/RedirectRoute";
 function App() {  
   return (
@@ -23,7 +23,7 @@ function App() {
             path="/Courses/:courseName"
             element={<BrowseCoursePage />}
           />
-          <Route path="/Search" element={<SearchPage />} />
+          <Route path="/Quiz" element={<GeneralQuizPage />} />
           <Route path="/Courses/:all" element={<BrowseCoursePage/>} />
           <Route path="/Profile/:userId" element={<ProfilePage />} />
         </Route>
