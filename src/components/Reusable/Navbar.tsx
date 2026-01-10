@@ -1,5 +1,6 @@
 import { Book, ChevronDown, Menu } from "lucide-react";
 import { useState } from "react";
+import { LockKeyhole } from "lucide-react";
 import { Link } from "react-router-dom";
 import useAuthCookies from "../../utils/UseAuth";
 import NavExpansion from "./NavExpansion";
@@ -31,7 +32,9 @@ export default function Navbar() {
                   />
                 </svg>
               </div>
-              <span className="text-2xl font-bold text-orange-500">Dev<span className="text-amber-50">Art</span></span>
+              <span className="text-2xl font-bold text-orange-500">
+                Dev<span className="text-amber-50">Art</span>
+              </span>
             </Link>
 
             {/* Navigation divs */}
@@ -55,6 +58,15 @@ export default function Navbar() {
                 <Book className="h-4 w-4" />
                 Quiz
               </Link>
+              {isAuthenticated && token?.role.toLowerCase() === "admin" ? (
+                <Link
+                  to={`/admin/${token?.userId}`}
+                  className="flex items-center gap-2 text-sm font-medium text-slate-300 transition-colors hover:text-orange-500 hover:cursor-pointer"
+                >
+                  <LockKeyhole className="h-4 w-4" />
+                  Admin Panel
+                </Link>
+              ) : null}
               {isAuthenticated ? (
                 <Link
                   to={`/Profile/${token?.userId}`}

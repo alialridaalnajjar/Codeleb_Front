@@ -13,7 +13,9 @@ import LoginPage from "./pages/LoginPage";
 import CoursesPage from "./pages/PlayPage";
 import ProfilePage from "./pages/ProfilePage";
 import RegisterPage from "./pages/RegisterPage";
+import AdminRedirectRoute from "./utils/AdminRedirectRoute";
 import RedirectRoute from "./utils/RedirectRoute";
+import AdminPage from "./pages/AdminPage";
 
 function ScrollToTop() {
   const location = useLocation();
@@ -25,7 +27,6 @@ function ScrollToTop() {
   }, [location.pathname]);
   return null;
 }
-
 
 function App() {
   return (
@@ -46,6 +47,9 @@ function App() {
             <Route path="/Profile/:userId" element={<ProfilePage />} />
           </Route>
           <Route path="/" element={<LandingPage />} />
+          <Route element={<AdminRedirectRoute />}>
+            <Route path="/admin/:id" element={<AdminPage />} />
+          </Route>
         </Routes>
       </Router>
     </>
