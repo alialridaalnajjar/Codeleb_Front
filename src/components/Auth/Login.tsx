@@ -138,7 +138,10 @@ export default function Login() {
                   type="checkbox"
                   checked={credentials.rememberMe}
                   onChange={(e) =>
-                    setCredentials({ ...credentials, rememberMe: e.target.checked })
+                    setCredentials({
+                      ...credentials,
+                      rememberMe: e.target.checked,
+                    })
                   }
                   className="mr-2 w-4 h-4 rounded border-slate-700 bg-slate-800/50 text-amber-600 focus:ring-amber-600"
                 />

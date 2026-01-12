@@ -6,6 +6,7 @@ import {
   useLocation,
 } from "react-router-dom";
 import "./App.css";
+import AdminPage from "./pages/AdminPage";
 import BrowseCoursePage from "./pages/BrowseCoursePage";
 import GeneralQuizPage from "./pages/GeneralQuizPage";
 import LandingPage from "./pages/LandingPage";
@@ -15,7 +16,6 @@ import ProfilePage from "./pages/ProfilePage";
 import RegisterPage from "./pages/RegisterPage";
 import AdminRedirectRoute from "./utils/AdminRedirectRoute";
 import RedirectRoute from "./utils/RedirectRoute";
-import AdminPage from "./pages/AdminPage";
 
 function ScrollToTop() {
   const location = useLocation();
@@ -41,7 +41,7 @@ function App() {
               path="/Courses/:courseName/:videoId"
               element={<CoursesPage />}
             />
-            <Route path="/Courses/:courseName" element={<BrowseCoursePage />} />
+            <Route path="/Courses/:genreName" element={<BrowseCoursePage />} />
             <Route path="/Quiz" element={<GeneralQuizPage />} />
             <Route path="/Courses/:all" element={<BrowseCoursePage />} />
             <Route path="/Profile/:userId" element={<ProfilePage />} />

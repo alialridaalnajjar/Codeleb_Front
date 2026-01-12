@@ -11,6 +11,7 @@ import Loading from "../utils/Loading";
 import { type ProfileData } from "../utils/Types";
 
 export default function ProfilePage() {
+  // states
   const { userId } = useParams();
   const [loading, setLoading] = useState(true);
   const [edit, setEdit] = useState(false);

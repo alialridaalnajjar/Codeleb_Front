@@ -4,7 +4,7 @@ import Navbar from "../components/Reusable/Navbar";
 export default function RegisterPage() {
   return (
     <>
-    <Navbar/>
+      <Navbar />
       <Register />
     </>
   );
