@@ -7,7 +7,7 @@ import { ArrowDownWideNarrow } from "lucide-react";
 import { ArrowUpWideNarrow } from "lucide-react";
 import BackgroundSpots from "./Reusable/BackgroundSpots";
 import Footer from "../components/Reusable/Footer";
-const genres = [
+const module = [
   "All",
   "React.js",
   "JavaScript",
@@ -17,17 +17,23 @@ const genres = [
 ];
 
 export default function BrowseCoursePage() {
+  // st
   const [selectedModule, setSelectedModule] = useState("All");
   const [videos, setVideos] = useState<Video[]>([]);
   const [loading, setLoading] = useState(true);
   const [isSorting, setIsSorting] = useState<number>(0);
-  const { courseName } = useParams();
+  const [searchQuery, setSearchQuery] = useState("");
+  const [selectedVideo, setSelectedVideo] = useState<number | null>(null);
+
+  // para
+  const { genreName } = useParams();
+
   useEffect(() => {
     const fetchVideos = async () => {
       try {
         setLoading(true);
         const response = await fetch(
-          `${import.meta.env.VITE_API_URL}/api/video/genre/${courseName}`
+          `${import.meta.env.VITE_API_URL}/api/video/genre/${genreName}`
         );
         const data = await response.json();
 
@@ -60,13 +66,10 @@ export default function BrowseCoursePage() {
       }
     };
 
-    if (courseName) {
+    if (genreName) {
       fetchVideos();
     }
-  }, [courseName]);
-
-  const [searchQuery, setSearchQuery] = useState("");
-  const [selectedVideo, setSelectedVideo] = useState<number | null>(null);
+  }, [genreName]);
 
   const formatDuration = (seconds: number) => {
     const minutes = Math.floor(seconds / 60);
@@ -111,7 +114,7 @@ export default function BrowseCoursePage() {
         <div className="container mx-auto px-4 py-8 lg:px-8 lg:py-12">
           <div className="mb-8">
             <h1 className="text-4xl font-bold text-white mb-3">
-              Browse {courseName} Videos
+              Browse {genreName} Videos
             </h1>
             <p className="text-gray-400">
               Explore our collection of expert-led video tutorials
@@ -150,7 +153,7 @@ export default function BrowseCoursePage() {
                   onClick={handleSortByDuration}
                 />
               )}
-              {genres.map((mod) => (
+              {module.map((mod) => (
                 <button
                   key={mod}
                   onClick={() => setSelectedModule(mod)}
@@ -187,7 +190,7 @@ export default function BrowseCoursePage() {
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
               {displayVideos.map((video) => (
                 <Link
-                  to={`/Courses/${courseName}/${video.video_id}`}
+                  to={`/Courses/${genreName}/${video.video_id}`}
                   key={video.video_id}
                   onClick={() => setSelectedVideo(video.video_id)}
                   className={`group bg-[#1a2332] rounded-lg overflow-hidden border-2 transition-all cursor-pointer ${

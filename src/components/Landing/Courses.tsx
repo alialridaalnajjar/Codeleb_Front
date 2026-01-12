@@ -57,14 +57,18 @@ const categories = [
 
 export default function Courses() {
   return (
-    <section className="bg-gray-950   px-4 py-16 sm:px-6 sm:py-20 lg:px-8 lg:py-24" id="courses">
+    <section
+      className="bg-gray-950   px-4 py-16 sm:px-6 sm:py-20 lg:px-8 lg:py-24"
+      id="courses"
+    >
       <div className="mx-auto max-w-7xl">
         <div className="text-center">
           <h2 className="text-3xl font-bold text-white sm:text-4xl lg:text-5xl">
             Explore Course <span className="text-orange-500">Categories</span>
           </h2>
           <p className="mx-auto mt-4 max-w-2xl text-pretty text-lg text-slate-300">
-            Find the perfect tutorials to advance your career and master new skills
+            Find the perfect tutorials to advance your career and master new
+            skills
           </p>
         </div>
 

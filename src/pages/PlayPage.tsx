@@ -1,5 +1,3 @@
-"use client";
-
 import { ChevronDown, ChevronUp, Clock, FileText, Tag } from "lucide-react";
 import { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
@@ -8,13 +6,17 @@ import Navbar from "../components/Reusable/Navbar";
 import { type Documentation, type Video } from "../utils/Types";
 
 export default function WatchPage() {
-  const [status, setStatus] = useState<boolean>(false);
-
+  // state wall :D
   const [docs, setDocs] = useState<Documentation[]>([]);
   const [videoData, setVideoData] = useState<Video>({} as Video);
   const [nextVideoData, setNextVideoData] = useState<Video[]>([] as Video[]);
+  const [expandedDoc, setExpandedDoc] = useState<number | null>(null);
+
+  // params
   const { videoId } = useParams();
   const { courseName } = useParams();
+
+  // on mount
   useEffect(() => {
     const fetchDocs = async () => {
       try {
@@ -62,45 +64,14 @@ export default function WatchPage() {
     nextVideos();
   }, [courseName, videoId]);
 
-  const fetchStatus = async () => {
-    if (status === false) {
-      try {
-        await fetch(
-          `${import.meta.env.VITE_API_URL}/api/video/mark_completed/${videoId}`,
-          { method: "PUT" }
-        );
-      } catch (error) {
-        console.error("Error marking video as completed:", error);
-      }
-    } else {
-      try {
-        const response = await fetch(
-          `${import.meta.env.VITE_API_URL}/api/video/status/${videoId}`,
-          { method: "GET" }
-        );
-        const data = await response.json();
-        setStatus(data.is_completed);
-      } catch (error) {
-        console.error("Error fetching video status:", error);
-        setStatus(false);
-      }
-    }
-  };
-
-  useEffect(() => {
-    (async () => {
-      await fetchStatus();
-    })();
-  }, []);
-
-  const [expandedDoc, setExpandedDoc] = useState<number | null>(null);
-
+  // time format
   const formatDuration = (seconds: number) => {
     const minutes = Math.floor(seconds / 60);
     const remainingSeconds = seconds % 60;
     return `${minutes}:${remainingSeconds.toString().padStart(2, "0")}`;
   };
 
+  // Open-close d oc
   const toggleDoc = (docId: number) => {
     setExpandedDoc(expandedDoc === docId ? null : docId);
   };
@@ -108,7 +79,6 @@ export default function WatchPage() {
   return (
     <div className="min-h-screen bg-gray-950">
       <Navbar />
-
       <div className="container mx-auto px-4 py-8 lg:px-8">
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
           {/* Main Content - Video Player */}
@@ -171,12 +141,8 @@ export default function WatchPage() {
                 </div>
 
                 <div className="hover:cursor-pointer flex items-center gap-2 px-3 py-2 bg-orange-500/10 border border-orange-500/30 rounded-lg">
-                  <span
-                    className={`text-sm font-medium ${
-                      status ? "text-red-400" : "text-orange-400"
-                    }`}
-                  >
-                    Mark as {status ? "Incomplete" : "Completed"}
+                  <span className={`text-sm font-medium ${"text-orange-400"}`}>
+                    Mark as complete
                   </span>
                 </div>
               </div>

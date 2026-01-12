@@ -4,7 +4,7 @@ import Navbar from "../components/Reusable/Navbar";
 export default function LoginPage() {
   return (
     <>
-    <Navbar/>
+      <Navbar />
       <Login />
     </>
   );

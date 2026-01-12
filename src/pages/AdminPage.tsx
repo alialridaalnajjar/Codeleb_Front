@@ -155,34 +155,38 @@ export default function AdminPage() {
     }
   };
 
- const editVideo = async () => {
-  const response = await fetch(
-    `${import.meta.env.VITE_API_URL}/api/video/update/${editingVideo?.video_id}`,
-    { 
-      method: "PUT",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(formData)
+  const editVideo = async () => {
+    const response = await fetch(
+      `${import.meta.env.VITE_API_URL}/api/video/update/${
+        editingVideo?.video_id
+      }`,
+      {
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formData),
+      }
+    );
+
+    if (!response.ok) {
+      console.error("Failed to update video:", await response.text());
+      return;
     }
-  );
-  
-  if (!response.ok) {
-    console.error("Failed to update video:", await response.text());
-    return;
-  }
-  
-  const data = await response.json();
-  console.log("Video updated successfully:", data);
-  // Update the local state
-  setVideos(videos.map(v => 
-    v.video_id === editingVideo?.video_id 
-      ? { ...formData as Video, video_id: editingVideo.video_id }
-      : v
-  ));
-  
-  closeModal();
-};
+
+    const data = await response.json();
+    console.log("Video updated successfully:", data);
+    // Update the local state
+    setVideos(
+      videos.map((v) =>
+        v.video_id === editingVideo?.video_id
+          ? { ...(formData as Video), video_id: editingVideo.video_id }
+          : v
+      )
+    );
+
+    closeModal();
+  };
 
   return (
     <>
