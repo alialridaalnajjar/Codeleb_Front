@@ -114,6 +114,22 @@ export default function ManageUsers() {
   };
 
   const editUser = async () => {
+    const response = await fetch(
+      `${import.meta.env.VITE_API_URL}/api/profile//admin/edit/${
+        editingUser?.user_id
+      }`,
+      {
+        method: "PUT",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(formData),
+      }
+    );
+    console.log(response);
+    if (!response.ok) {
+      console.error("Failed to update user");
+      return;
+    }
+
     setUser(
       user.map((u) =>
         u.user_id === editingUser?.user_id
