@@ -5,7 +5,6 @@ import ProfileAchievements from "../components/Profile/Acheivments";
 import EditProfile from "../components/Profile/EditProfile";
 import ProfileHeader from "../components/Profile/Header";
 import ProfileCourses from "../components/Profile/ProfileCourses";
-import ProfileStats from "../components/Profile/ProfileStats";
 import Navbar from "../components/Reusable/Navbar";
 import Loading from "../utils/Loading";
 import { type ProfileData } from "../utils/Types";
@@ -61,7 +60,6 @@ export default function ProfilePage() {
             <ProfileHeader {...profileData} setEdit={setEdit} />
             <div className="mt-8 grid gap-8 lg:grid-cols-3">
               <div className="lg:col-span-2 space-y-8">
-                <ProfileStats />
                 <ProfileCourses />
               </div>
               <div className="space-y-8">

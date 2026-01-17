@@ -35,7 +35,6 @@ export default function ManageVideos() {
         });
 
         setVideos(updatedVideos);
-        console.log("Fetched video data:", data);
       } catch (error) {
         console.error("Error fetching video data:", error);
         setVideos([]);

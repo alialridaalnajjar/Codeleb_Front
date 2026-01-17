@@ -21,13 +21,13 @@ export default function AdminPage() {
         </div>
         <div className=" flex flex-row items-center justify-center gap-5 pt-2 font-semibold ">
           <h1
-            className="hover:cursor-pointer hover:text-orange-500"
+            className="hover:cursor-pointer hover:text-orange-500 sm:focus:text-orange-500"
             onClick={() => setShow("videos")}
           >
             Videos
           </h1>
           <h1
-            className="hover:cursor-pointer hover:text-orange-500"
+            className="hover:cursor-pointer hover:text-orange-500 sm:focus:text-orange-500"
             onClick={() => setShow("users")}
           >
             Users

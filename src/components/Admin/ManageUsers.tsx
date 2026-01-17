@@ -41,10 +41,9 @@ export default function ManageUsers() {
     const fetchData = async () => {
       const request = await fetch(
         `${import.meta.env.VITE_API_URL}/api/profile/getAll`,
-        { method: "GET" }
+        { method: "GET" },
       );
       const data = await request.json();
-      console.log(data);
       setUser(data.users);
     };
     fetchData();
@@ -79,7 +78,22 @@ export default function ManageUsers() {
     if (editingUser) {
       editUser();
     } else {
-      // later add logic la new user
+      const createUser = async () => {
+        const response = await fetch(
+          `${import.meta.env.VITE_API_URL}/api/profile/admin/create`,
+          {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(formData),
+          },
+        );
+        if (!response.ok) {
+          console.error("Failed to create user");
+          return;
+        }
+      };
+      createUser();
+
       const newUser: TempUser = {
         ...(formData as TempUser),
         user_id: Math.max(...user.map((u) => u.user_id), 0) + 1,
@@ -91,21 +105,16 @@ export default function ManageUsers() {
   };
 
   const handleDeleteUser = async (userId: number) => {
-    console.log("Deleting user with ID:", userId);
     try {
       const response = await fetch(
         `${import.meta.env.VITE_API_URL}/api/profile/delete/${userId}`,
-        { method: "DELETE" }
+        { method: "DELETE" },
       );
-      console.log(response);
 
       if (!response.ok) {
         console.error("Failed to delete user");
         return;
       }
-
-      const data = await response.json();
-      console.log("Delete successful:", data);
 
       setUser((prevUsers) => prevUsers.filter((u) => u.user_id !== userId));
     } catch (error) {
@@ -122,9 +131,8 @@ export default function ManageUsers() {
         method: "PUT",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(formData),
-      }
+      },
     );
-    console.log(response);
     if (!response.ok) {
       console.error("Failed to update user");
       return;
@@ -134,8 +142,8 @@ export default function ManageUsers() {
       user.map((u) =>
         u.user_id === editingUser?.user_id
           ? { ...(formData as TempUser), user_id: editingUser.user_id }
-          : u
-      )
+          : u,
+      ),
     );
     closeModal();
   };
@@ -435,7 +443,7 @@ export default function ManageUsers() {
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <div>
                   <label className="block text-sm font-medium text-slate-300 mb-2">
-                    Location
+                    Password
                   </label>
                   <input
                     type="text"
@@ -444,7 +452,7 @@ export default function ManageUsers() {
                       setFormData({ ...formData, location: e.target.value })
                     }
                     className="w-full bg-[#0f1419] border border-slate-700/50 rounded-lg px-4 py-2 text-white focus:outline-none focus:border-orange-500 transition-colors"
-                    placeholder="New York, USA"
+                    placeholder="Must contain at least 6 characters"
                   />
                 </div>
 
